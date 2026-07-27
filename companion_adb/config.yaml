@@ -1,5 +1,5 @@
 name: "VW Group App ADB Bridge"
-version: "0.1.0-beta.7"
+version: "0.1.0-beta.8"
 slug: "vag_connect_companion_adb"
 stage: experimental
 description: >-
@@ -23,19 +23,22 @@ init: false
 # (later) discover the rotating wireless-debugging port via mDNS.
 host_network: true
 options:
-  pair_address: ""
   pair_code: ""
+  pair_address: ""
   connect_address: ""
   api_token: ""
 schema:
-  # One-time pairing (from Android → Wireless debugging → "Pair device with
-  # pairing code"): the pairing IP:port and the 6-digit code it shows.
-  pair_address: "str?"
+  # PAIRING (one time): on the phone open Wireless debugging → "Pair device with
+  # pairing code" and enter the 6-digit code here. The add-on finds the pairing
+  # IP:port over mDNS by itself, so the code is normally all you need.
   pair_code: "str?"
-  # OPTIONAL fallback. The add-on now finds the current connect IP:port over mDNS
-  # by itself (the port is ephemeral and changes on every toggle/reboot), so you
-  # normally leave this blank. Only set it (IP:port from the main Wireless
-  # debugging screen) if mDNS discovery does not work on your network.
+  # OPTIONAL pairing fallback: the pairing dialog's IP:port, only if mDNS does not
+  # find it. This is the PAIRING port from the dialog, NOT the connect port on the
+  # main Wireless debugging screen (pairing against the connect port fails).
+  pair_address: "str?"
+  # OPTIONAL connect fallback. The add-on finds the current connect IP:port over
+  # mDNS (it is ephemeral and changes on every toggle/reboot), so leave this blank
+  # unless mDNS discovery does not work on your network.
   connect_address: "str?"
   # Shared secret the integration must send in the X-Token header. Leave blank
   # only on a trusted, isolated network.

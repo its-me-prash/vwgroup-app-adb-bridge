@@ -4,6 +4,28 @@ All notable changes to this add-on are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning: [Semantic Versioning](https://semver.org/).
 
+## [0.1.0-beta.8] - 2026-07-28
+
+### Fixed
+- Pairing now uses the phone's pairing endpoint, not the connect endpoint.
+  Android 11+ advertises two separate wireless-debugging services over mDNS:
+  `_adb-tls-pairing._tcp` (the pairing dialog, a transient port) and
+  `_adb-tls-connect._tcp` (the connect port). `adb pair` against the connect
+  port fails with "protocol fault (couldn't read status message)". The add-on
+  now discovers the pairing endpoint over mDNS as well.
+
+### Changed
+- You normally enter only the 6-digit `pair_code`. Open the phone's "Pair device
+  with pairing code" dialog, put the code in, save, and the add-on finds the
+  pairing address itself and pairs within a few seconds. `pair_address` and
+  `connect_address` are optional fallbacks for networks where mDNS does not work.
+- `/health` now also reports `paired` and `discovery`, and pairing is retried on
+  a faster poll while the dialog is open.
+- Hardened the maintain loop: the mDNS discovery tables are read and written
+  under a lock and the loop survives transient errors, so an mDNS update landing
+  mid-iteration can no longer stop the bridge. Each pairing endpoint is tried
+  once per run to keep the log clean.
+
 ## [0.1.0-beta.7] - 2026-07-28
 
 ### Fixed
