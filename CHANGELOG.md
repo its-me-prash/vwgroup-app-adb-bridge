@@ -4,6 +4,17 @@ All notable changes to this add-on are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning: [Semantic Versioning](https://semver.org/).
 
+## [0.1.0-beta.2] - 2026-07-27
+
+### Added
+- `build.yaml` pinning the base image to `ghcr.io/home-assistant/{arch}-base:3.21`,
+  so the bundled `adb` is a known, reproducible version rather than whatever the
+  default base ships. Added `armhf` and `i386` to the supported arches.
+
+### Changed
+- `startup: services` and `boot: manual` (the add-on runs as a service and you
+  start it yourself; it does not auto-start on a Home Assistant reboot).
+
 ## [0.1.0-beta.1] - 2026-07-27
 
 First beta. A proof of concept, paired with the experimental companion channel in

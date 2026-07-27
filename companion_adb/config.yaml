@@ -1,5 +1,5 @@
 name: "VW Group App ADB Bridge"
-version: "0.1.0-beta.1"
+version: "0.1.0-beta.2"
 slug: "vag_connect_companion_adb"
 stage: experimental
 description: >-
@@ -8,11 +8,16 @@ description: >-
   wireless debugging (which the integration's pure-python transport cannot do),
   and exposes a small local API the integration talks to.
 url: "https://github.com/its-me-prash/vwgroup-app-adb-bridge"
-# adb is available for all three arches Home Assistant OS runs on.
+# adb (android-tools) is packaged for all the arches Home Assistant runs on.
+# Base image is pinned in build.yaml.
 arch:
   - amd64
   - aarch64
   - armv7
+  - armhf
+  - i386
+startup: services
+boot: manual
 init: false
 # host networking is REQUIRED: the bridge must reach the phone on the LAN and
 # (later) discover the rotating wireless-debugging port via mDNS.
