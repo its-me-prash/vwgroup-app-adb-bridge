@@ -1,11 +1,12 @@
-name: "VAG Connect Companion (ADB)"
-version: "0.1.0"
+name: "VW Group App ADB Bridge"
+version: "0.1.0-beta.1"
 slug: "vag_connect_companion_adb"
+stage: experimental
 description: >-
-  ADB-over-TLS bridge for the VAG Connect companion channel. Bundles the real
-  adb binary so it can pair with and drive an Android 11+ phone over wireless
-  debugging (which the integration's pure-python transport cannot do), and
-  exposes a small local API the integration talks to.
+  ADB-over-TLS bridge for the VW Group Connect companion channel. Bundles the
+  real adb binary so it can pair with and drive an Android 11+ phone over
+  wireless debugging (which the integration's pure-python transport cannot do),
+  and exposes a small local API the integration talks to.
 url: "https://github.com/its-me-prash/vwgroup-app-adb-bridge"
 # adb is available for all three arches Home Assistant OS runs on.
 arch:
