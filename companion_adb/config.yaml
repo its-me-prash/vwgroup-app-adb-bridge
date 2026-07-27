@@ -1,5 +1,5 @@
 name: "VW Group App ADB Bridge"
-version: "0.1.0-beta.3"
+version: "0.1.0-beta.4"
 slug: "vag_connect_companion_adb"
 stage: experimental
 description: >-
@@ -32,8 +32,10 @@ schema:
   # pairing code"): the pairing IP:port and the 6-digit code it shows.
   pair_address: "str?"
   pair_code: "str?"
-  # The connect IP:port from the main Wireless debugging screen (changes after a
-  # reboot — mDNS auto-discovery lands in a later version).
+  # OPTIONAL fallback. The add-on now finds the current connect IP:port over mDNS
+  # by itself (the port is ephemeral and changes on every toggle/reboot), so you
+  # normally leave this blank. Only set it (IP:port from the main Wireless
+  # debugging screen) if mDNS discovery does not work on your network.
   connect_address: "str?"
   # Shared secret the integration must send in the X-Token header. Leave blank
   # only on a trusted, isolated network.

@@ -4,6 +4,20 @@ All notable changes to this add-on are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning: [Semantic Versioning](https://semver.org/).
 
+## [0.1.0-beta.4] - 2026-07-28
+
+### Added
+- mDNS auto-discovery of the wireless-debugging endpoint. The connect port is
+  ephemeral (it changes on every toggle or reboot), so the add-on now finds the
+  current one over `_adb-tls-connect._tcp` instead of a fixed address.
+  `connect_address` becomes an optional fallback (leave it blank). Best-effort:
+  if `py3-zeroconf` is unavailable the add-on falls back to `connect_address`.
+
+### Changed
+- `ADB_MDNS_AUTO_CONNECT=1` so adb itself also re-finds the phone; the served
+  device is now whichever phone adb has online, so a port change no longer needs
+  a manual update.
+
 ## [0.1.0-beta.3] - 2026-07-28
 
 ### Changed

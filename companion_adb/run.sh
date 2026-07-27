@@ -4,6 +4,7 @@
 # adb server and hand off to the bridge (pairs, connects, serves the HTTP API).
 set -e
 export HOME=/data
+export ADB_MDNS_AUTO_CONNECT=1   # let adb itself re-find the phone over mDNS too
 mkdir -p /data/.android
 adb start-server >/dev/null 2>&1 || true
 exec python3 /bridge.py
