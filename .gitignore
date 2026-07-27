@@ -1,0 +1,32 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+*.zip
+.env
+.venv
+venv/
+*.log
+.idea/
+.vscode/
+*.swp
+carconnectivity.json
+.netrc
+.coverage
+
+# Bruno local environment files (real credentials — never commit)
+tests/bruno/**/environments/*.local.bru
+
+# Local editor / assistant workspace settings
+.claude/
+.release_notes_*
+
+# pb-datenschutz — sensitive local artifacts, never commit
+# Contains: real credentials, APK binaries, smali decompilation, forensic
+# captures, canary logs. Everything under _private/ stays on disk only.
+_private/
+.app-atlas-apk-cache/
+canary-credentials.env
+canary-log.jsonl

@@ -1,0 +1,34 @@
+name: "VAG Connect Companion (ADB)"
+version: "0.1.0"
+slug: "vag_connect_companion_adb"
+description: >-
+  ADB-over-TLS bridge for the VAG Connect companion channel. Bundles the real
+  adb binary so it can pair with and drive an Android 11+ phone over wireless
+  debugging (which the integration's pure-python transport cannot do), and
+  exposes a small local API the integration talks to.
+url: "https://github.com/its-me-prash/vwgroup-app-adb-bridge"
+# adb is available for all three arches Home Assistant OS runs on.
+arch:
+  - amd64
+  - aarch64
+  - armv7
+init: false
+# host networking is REQUIRED: the bridge must reach the phone on the LAN and
+# (later) discover the rotating wireless-debugging port via mDNS.
+host_network: true
+options:
+  pair_address: ""
+  pair_code: ""
+  connect_address: ""
+  api_token: ""
+schema:
+  # One-time pairing (from Android → Wireless debugging → "Pair device with
+  # pairing code"): the pairing IP:port and the 6-digit code it shows.
+  pair_address: "str?"
+  pair_code: "str?"
+  # The connect IP:port from the main Wireless debugging screen (changes after a
+  # reboot — mDNS auto-discovery lands in a later version).
+  connect_address: "str?"
+  # Shared secret the integration must send in the X-Token header. Leave blank
+  # only on a trusted, isolated network.
+  api_token: "str?"
