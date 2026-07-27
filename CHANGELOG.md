@@ -4,6 +4,15 @@ All notable changes to this add-on are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning: [Semantic Versioning](https://semver.org/).
 
+## [0.1.0-beta.5] - 2026-07-28
+
+### Added
+- An AppArmor profile that confines the container (allows adb, python, the s6
+  init system, network and the data volume; denies the rest). This raises the
+  Home Assistant add-on security rating. `host_network` stays (it is required
+  for adb over the LAN and mDNS), so the rating cannot reach the very top without
+  the ingress web UI planned for QR pairing.
+
 ## [0.1.0-beta.4] - 2026-07-28
 
 ### Added

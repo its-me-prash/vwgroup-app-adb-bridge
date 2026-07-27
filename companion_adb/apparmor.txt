@@ -1,0 +1,40 @@
+#include <tunables/global>
+
+profile vag_connect_companion_adb flags=(attach_disconnected,mediate_deleted) {
+  #include <abstractions/base>
+
+  # Network: adb over the LAN, mDNS discovery, and the local HTTP API.
+  network inet stream,
+  network inet dgram,
+  network inet6 stream,
+  network inet6 dgram,
+  network netlink raw,
+
+  # Signals within the add-on (s6 supervisor, adb child processes).
+  signal,
+
+  # s6-overlay init system from the Home Assistant base image.
+  /init ix,
+  /package/** ix,
+  /command/** ix,
+  /etc/s6-overlay/** ix,
+  /etc/services.d/** rwix,
+  /etc/cont-init.d/** rwix,
+  /etc/cont-finish.d/** rwix,
+  /run/{,**} rwk,
+  /dev/tty rw,
+  /dev/null rw,
+
+  # Binaries: the base image, adb, python3, the run script.
+  /bin/** ix,
+  /usr/bin/** ix,
+  /usr/lib/** mr,
+  /usr/lib/python3*/** r,
+  /run.sh rix,
+  /bridge.py r,
+
+  # Add-on persistent data (the paired adb key lives here) + scratch + configs.
+  /data/** rwk,
+  /tmp/** rwk,
+  /etc/** r,
+}
