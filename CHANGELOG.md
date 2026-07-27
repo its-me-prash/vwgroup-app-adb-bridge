@@ -4,6 +4,15 @@ All notable changes to this add-on are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning: [Semantic Versioning](https://semver.org/).
 
+## [0.1.0-beta.6] - 2026-07-28
+
+### Fixed
+- Removed the AppArmor profile added in beta.5: it was too strict for the
+  s6-overlay init and put the container in a restart loop (`can't open '/init'`).
+  The security rating goes back to 4; a properly tested profile (or the ingress
+  web UI, which lifts the rating on its own) can revisit this later. Working beats
+  a broken container for one rating point.
+
 ## [0.1.0-beta.5] - 2026-07-28
 
 ### Added
