@@ -4,6 +4,13 @@ All notable changes to this add-on are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning: [Semantic Versioning](https://semver.org/).
 
+## [0.1.0-beta.3] - 2026-07-28
+
+### Changed
+- The add-on log now shows the pairing, the connection state, and each shell
+  command it runs, so the log is useful for troubleshooting. (The `uiautomator
+  dump` output still comes back in the HTTP response, not the log.)
+
 ## [0.1.0-beta.2] - 2026-07-27
 
 ### Added
