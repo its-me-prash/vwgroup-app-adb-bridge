@@ -4,6 +4,12 @@ All notable changes to this add-on are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning: [Semantic Versioning](https://semver.org/).
 
+## [0.1.0-beta.9] - 2026-07-28
+
+### Added
+- An add-on icon and logo, so it shows its own artwork in the Home Assistant
+  store list and on the add-on page instead of the default placeholder.
+
 ## [0.1.0-beta.8] - 2026-07-28
 
 ### Fixed

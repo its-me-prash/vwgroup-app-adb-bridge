@@ -1,4 +1,6 @@
-<h1 align="center">VW Group App ADB Bridge</h1>
+<p align="center">
+  <img src="companion_adb/logo.png" alt="VW Group App ADB Bridge" width="520">
+</p>
 
 <p align="center">
   <strong>Home Assistant add-on that lets the <a href="https://github.com/its-me-prash/vwgroup-connect-ha">VW Group Connect</a> companion channel drive the brand app on a modern Android phone.</strong><br>

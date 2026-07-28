@@ -1,1 +1,8 @@
 * text=auto eol=lf
+
+# Images are binary; never apply text/eol normalization to them.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.webp binary

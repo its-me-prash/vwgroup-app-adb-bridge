@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" alt="VW Group App ADB Bridge" width="480">
+</p>
+
 # VW Group App ADB Bridge
 
 Bundles the real `adb` binary and does the Android 11+ **pairing + TLS** that the
