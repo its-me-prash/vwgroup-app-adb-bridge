@@ -4,6 +4,14 @@ All notable changes to this add-on are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 versioning: [Semantic Versioning](https://semver.org/).
 
+## [0.1.0-beta.10] - 2026-08-01
+
+### Changed
+- Documented how to point VW Group Connect at this add-on. The integration
+  gained an option to run its companion channel through this bridge in v2.27.0,
+  which is what makes an Android 11+ phone work; the setup steps are in the
+  README.
+
 ## [0.1.0-beta.9] - 2026-07-28
 
 ### Added

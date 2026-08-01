@@ -52,6 +52,20 @@ phone:
 curl -XPOST -H "X-Token: YOUR_SECRET" --data "echo ok" http://HOST_IP:8129/shell
 ```
 
+## 4. Point the integration at the add-on
+
+In [VW Group Connect](https://github.com/its-me-prash/vwgroup-connect-ha)
+(v2.27.0 or newer), add the companion channel and:
+
+- tick **"Connect through the ADB Bridge add-on"**
+- enter this **add-on's** host and port (`8129`), not the phone's
+- put your `api_token` in **Add-on token** if you set one
+
+The integration then runs its screen reads through this add-on instead of
+speaking ADB to the phone itself, which is what makes an Android 11+ phone work
+at all. On an older phone you can still leave the box unticked and point the
+integration straight at the phone.
+
 ## API
 
 - `GET /health` — `{connected, serial, paired, adb_version, last_error, discovery}`
