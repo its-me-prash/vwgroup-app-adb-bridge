@@ -42,6 +42,8 @@ On the phone: **Developer options → Wireless debugging → On**.
 - **Pair device with pairing code** shows a pairing `IP:PORT` and a 6-digit code (valid for about a minute).
 - The main wireless-debugging screen shows the connect `IP:PORT` (a different, higher port).
 
+> **These are two different ports and they are not interchangeable.** The pairing port only exists while that dialog is open on the phone, and it changes every time you open it. Putting the connect port into `pair_address` is the most common reason pairing fails, and the error it produces does not say so.
+
 Fill in the options, then start the add-on (it pairs on start, within the pairing window):
 
 | Option | Value |
@@ -66,6 +68,22 @@ curl http://HOST_IP:8129/health
 ```bash
 curl -XPOST -H "X-Token: YOUR_SECRET" --data "echo ok" http://HOST_IP:8129/shell
 ```
+
+## Point the integration at it
+
+This is the step people miss: with the add-on running you give the integration the **add-on's** address, not the phone's.
+
+In Home Assistant, **Settings → Devices & Services → VW Group Connect → Configure → Add a companion phone (ADB)**, then:
+
+| Field | Value |
+|---|---|
+| **Connect through the ADB Bridge add-on** | tick it |
+| **Phone IP address** | the address of the machine running Home Assistant, e.g. `192.168.1.10` |
+| **ADB port** | `8129` |
+| **Add-on token** | the `api_token` you set above, if you set one |
+| **Vehicle brand** / **VIN** | the brand app on the phone, and the car it shows |
+
+With the box ticked, the two address fields mean the add-on rather than the phone, which is why entering the phone's own IP there fails even though the add-on is working.
 
 ## How it works
 
